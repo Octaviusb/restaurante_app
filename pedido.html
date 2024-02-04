@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/pedido.css">
+    <script src="pedido.js" defer></script>
+    <title>Realizar Pedido - Restaurante Coma Pues</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Restaurante Coma Pues!!!</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="clientes.html">Clientes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Realizar Pedido</h2>
+
+            <section id="detalle-pedido"><br>
+                <!-- Aquí se mostrarán los detalles del pedido -->
+            </section>
+            <section id="total-factura"><br>
+                <!-- Aquí se mostrará el total de la factura -->
+            </section>
+            <section id="info-cliente"><br>
+                <!-- Aquí se mostrará la información del cliente -->
+                <form id="formularioCliente"><br>
+                    <input type="text" id="nombre" placeholder="Nombre">
+                    <input type="text" id="identificacion" placeholder="Identificación">
+                    <input type="text" id="direccion" placeholder="Dirección">
+                    <input type="text" id="telefono" placeholder="Teléfono">
+                    <button type="button" id="guardarInfoClienteBtn">Guardar Información del Cliente</button><br><br>
+                </form>
+            </section>
+            
+            <button onclick="generarFacturaYRedirigir()">Realizar Pedido</button><br><br>
+<a href="cliente.html">Continuar con los datos del cliente</a>
+        </div>
+    </main>
+
+    <div id="factura-container"></div>
+    
+
+    <footer>
+        <p>¡Gracias por elegir Restaurante Coma Pues!</p>
+    </footer>
+</body>
+</html>

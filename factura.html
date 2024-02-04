@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
+    <script src="factura.js" defer></script>
+
+</head>
+<body font-family="arial">
+
+  
+</head>
+<body>
+
+<script>
+ function generarProducto(){
+
+  var producto, precio, cantidad, subtotalf=0, iva=0, tp=0;
+  var nom, pre,cant,met,met1,met2,met3, nomcl,dir,ced,tel,cont=0,i=0;
+  var f = new Date();
+  nomcl=prompt('Ingrese el nombre del cliente: ');
+  dir=prompt('Ingrese la dirección del cliente: (a)'+nomcl);
+  tel=prompt('ingrese el numero de telefono del cliente: '+nomcl);
+  ced=prompt('ingrese el numero de identificación del cliente: '+nomcl);
+  alert('Elija el método de pago, Efectivo, Terjeta de crédito');
+  met=prompt('si es efectivo, ingrese + o tarjeta ingrese - ');
+
+  document.write('<strong>fecha: </strong>' +f.getDate() + '/' + (f.getMont()+1) + '/' + f.getFullYear());
+  document.write('<strong>INFORMACIÓN DEL CLIENTE<br><br></strong>'); 
+  document.write('<li>Nombre del Cliente: </li> ' +nomcl+'<br>","","<li>Dirección del cliente</li>
+
+ }
+</script>
+
+</body>
+</html>

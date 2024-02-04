@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Semanal</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Restaurante Coma Pues!!!</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="pedido.html">Realizar Pedido</a></li>
+            <li><a href="clientes.html">Clientes</a></li>
+        </ul>
+    </nav>
+
+    <div class="menu-container">
+        <div class="menu-section" id="menu-section-lunes">
+            <h2>Menú Lunes</h2>
+            <ul id="day-lunes" class="day">
+                <!-- Contenido del menú para el lunes -->
+            </ul>
+        </div>
+    
+        <div class="menu-section" id="menu-section-martes">
+            <h2>Menú Martes</h2>
+            <ul id="day-martes" class="day">
+                <!-- Contenido del menú para el martes -->
+            </ul>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu-section" id="menu-section-miercoles">
+                <h2>Menú Miercoles</h2>
+                <ul id="day-miercoles" class="day">
+                    <!-- Contenido del menú para el miercoles -->
+                </ul>
+            </div>
+        
+            <div class="menu-section" id="menu-section-jueves">
+                <h2>Menú Jueves</h2>
+                <ul id="day-jueves" class="day">
+                    <!-- Contenido del menú para el jueves -->
+                </ul>
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-section" id="menu-section-viernes">
+                    <h2>Menú Viernes</h2>
+                    <ul id="day-viernes" class="day">
+                        <!-- Contenido del menú para el viernes -->
+                    </ul>
+                </div>
+            
+                <div class="menu-section" id="menu-section-sabado">
+                    <h2>Menú Sabado</h2>
+                    <ul id="day-sabado" class="day">
+                        <!-- Contenido del menú para el sabado -->
+                    </ul>
+                </div>
+
+        <div class="order-summary">
+        <h2>Resumen del Pedido</h2>
+        <ul id="order-summary-list">
+            <!-- Aquí se mostrarán los elementos seleccionados y su total -->
+        </ul>
+        <p>Total: $<span id="total">0.00</span></p>
+        
+    </div>
+</div>
+
+    <script>
+        // Definir la lista de productos para cada día de la semana
+        const menuData = {
+            lunes: ["Arroz con pollo", 10000, "Mojarra frita", 10000, "Ensalada de verduras", 1500, "Ensalada corriente", 1000, "Sopa de pasta", 2500, "Sopa de plátano", 2500],
+            martes: ["Pechuga a la plancha", 10000, "Carne Asada", 10000, "Ensalada de verduras", 1500, "Ensalada corriente", 1000, "Sopa de pasta", 2500, "Sopa de cuchuco", 2500],
+            miercoles: ["Mini Paisa", 10000,	"Lengua en salsa", 10000, "Ensalada mixta",	1500, "Ensalada corriente", 1000, "Sopa de mazamorra", 2500, "Sopa de plátano",	2500],
+            jueves: ["Arroz con pollo", 10000, "Mojarra frita", 10000, "Ensalada de verduras", 1500, "Ensalada corriente", 1000, "Sopa de pasta", 2500, "Sopa de plátano", 2500],
+            viernes: ["Pechuga a la plancha", 10000, "Carne Asada", 10000, "Ensalada de verduras", 1500, "Ensalada corriente", 1000, "Sopa de pasta", 2500, "Sopa de cuchuco", 2500],
+            sabado: ["Mini Paisa", 10000,	"Lengua en salsa", 10000, "Ensalada mixta",	1500, "Ensalada corriente", 1000, "Sopa de mazamorra", 2500, "Sopa de plátano",	2500],
+        };
+
+        // Generar dinámicamente los elementos del menú y los checkbox
+        Object.keys(menuData).forEach(dia => {
+            const menuSection = document.getElementById(`menu-section-${dia}`);
+            const dayList = document.getElementById(`day-${dia}`);
+
+            // Agregar checkbox y elementos de la lista
+            for (let i = 0; i < menuData[dia].length; i += 2) {
+                const productName = menuData[dia][i];
+                const productPrice = menuData[dia][i + 1];
+
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <input type="checkbox" class="product-checkbox" id="${dia}-${productName}" data-price="${productPrice}">
+                    <label for="${dia}-${productName}">
+                        <span class="dish">${productName}</span> - $${productPrice.toFixed(2)}
+                    </label>`;
+                dayList.appendChild(listItem);
+            }
+        });
+
+        // Agregar evento de cambio a los checkboxes
+        const checkboxes = document.querySelectorAll('.product-checkbox');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', actualizarResumen);
+        });
+
+        // Función para actualizar el resumen del pedido
+    function actualizarResumen() {
+        const summaryList = document.getElementById('order-summary-list');
+        const totalElement = document.getElementById('total');
+        let total = 0;
+
+        // Limpiar la lista actual
+        summaryList.innerHTML = '';
+
+        // Array para almacenar productos seleccionados
+        const selectedProducts = [];
+
+        // Recorrer los checkboxes y sumar los productos seleccionados
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                const productName = checkbox.id.split('-')[1];
+                const productPrice = parseFloat(checkbox.getAttribute('data-price'));
+                total += productPrice;
+
+                const listItem = document.createElement('li');
+                listItem.textContent = productName;
+                summaryList.appendChild(listItem);
+
+                // Guardar el producto seleccionado en el array
+                selectedProducts.push({ productName, productPrice });
+            }
+        });
+
+        // Almacenar los productos seleccionados y total en localStorage
+        const pedido = { productos: selectedProducts, total: total.toFixed(2) };
+        localStorage.setItem('pedido', JSON.stringify(pedido));
+
+        // Actualizar el total
+        totalElement.textContent = total.toFixed(2);
+    }
+    </script>
+
+    <button onclick="window.location.href='pedido.html'">Realizar Pedido</button>
+
+</body>
+</html>

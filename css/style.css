@@ -1,0 +1,115 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+header h1 {
+    font-size: 4em; 
+    margin: 0; 
+    padding: 0; 
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    background-image: url('/img/salon-del-restaurante-tragabuches-marbella_800.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px; 
+}
+
+.cuadro-blanco {
+    width: 85%;
+    height: 100%;
+    background-color: #CCCCCC;
+    text-align: center;
+}
+
+.domiciliario {
+    width: 800px;
+    margin-bottom: 10px;
+}
+
+.cuadros-descriptivos {
+    color: green;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -90px;  
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+}
+
+.pedido {
+    display: flex;
+    text-align: center;
+    margin-top: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cuadro {
+    width: 25%; 
+    background-color: #e0e0e0;
+    padding: 10px;
+    text-align: center;
+    bottom: 30px;
+}
+
+.bloqueado {
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    justify-content: space-between;
+    bottom: -320px;  
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.bloqueado p {
+    font-size: 4em;
+    margin-top: 20px; 
+}
+
+
